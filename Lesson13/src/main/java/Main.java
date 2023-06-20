@@ -32,9 +32,9 @@ public class Main {
         System.out.println(engineer8.countSalary());
 
         System.out.println(director1);
-        Director.toStringAll(director1);
-        System.out.println(Director.isSubordinates(director1, engineer1));
-        System.out.println(Director.isSubordinatesAll(director1, engineer9));
+
+        System.out.println(director1.isSubordinates("engineer1"));
+        System.out.println(director1.isSubordinatesAll("engineer9"));
 
     }
 }

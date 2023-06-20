@@ -21,8 +21,8 @@ public enum Position {
             return positionCoefficient;
         }
 
-        public String getPosition() {
-            return position.name();
+        public Position getPosition() {
+            return position;
         }
     }
 

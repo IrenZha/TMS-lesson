@@ -1,4 +1,4 @@
-public class Worker {
+public abstract class Worker {
     private String firstName;
     private String lastName;
     private Gender gender;
@@ -16,6 +16,14 @@ public class Worker {
         this.gender = gender;
         this.experience = experience;
         this.typeOfPosition = typeOfPosition;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public Position.TypeOfPosition getTypeOfPosition() {
+        return typeOfPosition;
     }
 
     public double countSalary() {
