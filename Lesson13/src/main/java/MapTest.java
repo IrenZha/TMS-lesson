@@ -35,7 +35,6 @@ public class MapTest {
         int countEng = 0;
         Collection<Worker> values = workerMap.values();
         for (Worker workers : values) {
-            System.out.println(workers);
             if (workers.getTypeOfPosition().getPosition().equals(Position.DIRECTOR)) countDir++;
             if (workers.getTypeOfPosition().getPosition().equals(Position.ENGINEER)) countEng++;
         }
