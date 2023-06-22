@@ -37,13 +37,16 @@ public class Director extends Worker {
         //   System.out.print("Bonus = "+ countSubordinates + " * 500 + ");
         return super.countSalary() + subordinates.size() * 500;
     }
-
+/*
     @Override
     public String toString() {
         return "Director{" +
                 "subordinates=" + "\n" +
-                subordinates +
-                "salary=" + countSalary() + "\n" +
-                '}';
+                subordinates + '}';
+    }
+*/
+    @Override
+    public int compareTo(Object o) {
+        return super.compareTo(o);
     }
 }
