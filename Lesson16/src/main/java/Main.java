@@ -47,7 +47,7 @@ public class Main {
         person5.addChild(child7);
 
         List<Person> genderMale = people.stream()
-                .filter(person -> person.getGender().equals(Gender.MALE))
+                .filter(person -> person.getGender()==Gender.MALE)
                 .collect(Collectors.toList());
         System.out.println(genderMale);
 
@@ -67,7 +67,7 @@ public class Main {
         List<Person> genderFmMale = people.stream()
                 .filter(person -> person.getGender().equals(Gender.FEMALE))
                 .collect(Collectors.filtering(person -> person.getChildren().stream()
-                        .allMatch(child -> child.getAge() < 12), Collectors.toList()));
+                        .anyMatch(child -> child.getAge() < 12), Collectors.toList()));
         System.out.println(genderFmMale);
 
         List<Integer> allAge = people.stream()

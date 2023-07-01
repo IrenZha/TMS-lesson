@@ -1,11 +1,12 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Person {
     private String login;
     private String name;
     private int age;
    private Gender gender;
-  private ArrayList<Child> children = new ArrayList<>();
+ List<Child> children = new ArrayList<>();
 
     public Person(String login, String name, int age, Gender gender) {
         this.login = login;
@@ -33,7 +34,7 @@ public class Person {
         return gender;
     }
 
-    public ArrayList<Child> getChildren() {
+    public List<Child> getChildren() {
         return children;
     }
 
