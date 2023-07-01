@@ -15,52 +15,29 @@ public class MapTest {
         Engineer engineer7 = new Engineer("engineer7", "K", 11, Worker.Gender.FEMALE, Position.TypeOfPosition.AUTOMATOR);
         Engineer engineer8 = new Engineer("engineer8", "L", 3, Worker.Gender.FEMALE, Position.TypeOfPosition.AUTOMATOR);
         Engineer engineer9 = new Engineer("engineer9", "M", 15, Worker.Gender.FEMALE, Position.TypeOfPosition.COMMUNICATION);
-
-        Map<String, Worker> workerMap = new TreeMap<>();
-        workerMap.put(director1.getFirstName(), director1);
-        workerMap.put(director2.getFirstName(), director2);
-        workerMap.put(director3.getFirstName(), director3);
-        workerMap.put(director4.getFirstName(), director4);
-        workerMap.put(engineer1.getFirstName(), engineer1);
-        workerMap.put(engineer2.getFirstName(), engineer2);
-        workerMap.put(engineer3.getFirstName(), engineer3);
-        workerMap.put(engineer4.getFirstName(), engineer4);
-        workerMap.put(engineer5.getFirstName(), engineer5);
-        workerMap.put(engineer6.getFirstName(), engineer6);
-        workerMap.put(engineer7.getFirstName(), engineer7);
-        workerMap.put(engineer8.getFirstName(), engineer8);
-        workerMap.put(engineer9.getFirstName(), engineer9);
-
-        int countDir = 0;
-        int countEng = 0;
-        Collection<Worker> values = workerMap.values();
-        for (Worker workers : values) {
-            if (workers.getTypeOfPosition().getPosition().equals(Position.DIRECTOR)) countDir++;
-            if (workers.getTypeOfPosition().getPosition().equals(Position.ENGINEER)) countEng++;
+        List<Worker> workers = new ArrayList<>();
+        workers.add(director1);
+        workers.add(director2);
+        workers.add(director3);
+        workers.add(director4);
+        workers.add(engineer1);
+        workers.add(engineer2);
+        workers.add(engineer3);
+        workers.add(engineer4);
+        workers.add(engineer5);
+        workers.add(engineer6);
+        workers.add(engineer7);
+        workers.add(engineer8);
+        workers.add(engineer9);
+        Map<Position, Integer> map = new TreeMap<>();
+        int i = 0;
+        for (Worker worker : workers) {
+            if (!map.containsKey(worker.getTypeOfPosition().getPosition())) {
+                map.put(worker.getTypeOfPosition().getPosition(), i = 1);
+            } else map.put(worker.getTypeOfPosition().getPosition(), i += 1);
+            //          System.out.println(map.values());
+            //          System.out.print(worker);
         }
-        System.out.println(Position.DIRECTOR.name() + " - " + countDir);
-        System.out.println(Position.ENGINEER.name() + " - " + countEng);
-
-        countDir = 0;
-        countEng = 0;
-        Set<String> keys = workerMap.keySet();
-        for (String key : keys) {
-            Worker worker = workerMap.get(key);
-            if (worker.getTypeOfPosition().getPosition().equals(Position.DIRECTOR)) countDir++;
-            if (worker.getTypeOfPosition().getPosition().equals(Position.ENGINEER)) countEng++;
-        }
-        System.out.println(Position.DIRECTOR.name() + " - " + countDir);
-        System.out.println(Position.ENGINEER.name() + " - " + countEng);
-
-        countDir = 0;
-        countEng = 0;
-        Set<Map.Entry<String, Worker>> entries = workerMap.entrySet();
-        for (Map.Entry<String, Worker> entry : entries) {
-            Worker value = entry.getValue();
-            if (value.getTypeOfPosition().getPosition().equals(Position.DIRECTOR)) countDir++;
-            if (value.getTypeOfPosition().getPosition().equals(Position.ENGINEER)) countEng++;
-        }
-        System.out.println(Position.DIRECTOR.name() + " - " + countDir);
-        System.out.println(Position.ENGINEER.name() + " - " + countEng);
+        System.out.println(map.entrySet());
     }
 }
