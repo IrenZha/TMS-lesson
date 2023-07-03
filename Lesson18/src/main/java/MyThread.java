@@ -1,5 +1,11 @@
-public class T implements Runnable {
+public class MyThread implements Runnable {
+    String name;
     int count = 0;
+
+    public MyThread(String name) {
+        this.name = name;
+    }
+
     @Override
     public void run() {
         Thread thread = Thread.currentThread();
