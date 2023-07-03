@@ -29,14 +29,12 @@ public class MapTest {
         workers.add(engineer7);
         workers.add(engineer8);
         workers.add(engineer9);
-        Map<Position, Integer> map = new TreeMap<>();
-        int i = 0;
+        Map<Position, Integer> map = new HashMap<>();
+
         for (Worker worker : workers) {
-            if (!map.containsKey(worker.getTypeOfPosition().getPosition())) {
-                map.put(worker.getTypeOfPosition().getPosition(), i = 1);
-            } else map.put(worker.getTypeOfPosition().getPosition(), i += 1);
-            //          System.out.println(map.values());
-            //          System.out.print(worker);
+            map.put(worker.getTypeOfPosition().getPosition(), map.getOrDefault(worker.getTypeOfPosition().getPosition(), 0) + 1);
+            //   System.out.println(map.values());
+            //   System.out.print(worker);
         }
         System.out.println(map.entrySet());
     }
