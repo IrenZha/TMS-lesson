@@ -8,7 +8,4 @@ public interface TableService<T> {
     void delete(int id);
 
     void readTable();
-
-    boolean isContains(int id);
-
 }

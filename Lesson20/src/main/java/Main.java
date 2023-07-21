@@ -11,13 +11,12 @@ public class Main {
         cityService.insert(new City(2, "Vitebsk"));
         cityService.insert(new City(3, "Grodno"));
         cityService.insert(new City(4, "Gomel"));
-    /*
-        System.out.println(cityService.getCities());
+
         cityService.readTable();
         cityService.update(new City(3, "Mogilev"));
-        System.out.println(cityService.getCities());
+        System.out.println("---------------------------------------------------");
         cityService.readTable();
-*/
+
         StudentService studentService = new StudentService();
         studentService.create();
         studentService.insert(new Student(1, "name1", true, 1));
@@ -33,12 +32,12 @@ public class Main {
         studentService.update(new Student(8, "name10", false, 1));
         System.out.println(studentService.students);
         studentService.readTable();
+
         studentService.delete(3);
         studentService.delete(7);
         cityService.delete(1);
         System.out.println(studentService.students);
         studentService.readTable();
-        System.out.println(cityService.getCities());
         cityService.readTable();
 
     }
