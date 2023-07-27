@@ -27,16 +27,16 @@ public class Main {
         studentService.insert(new Student(6, "name6", false, 1));
         studentService.insert(new Student(7, "name7", false, 2));
         studentService.insert(new Student(8, "name8", false, 3));
-        System.out.println(studentService.students);
+
         studentService.readTable();
         studentService.update(new Student(8, "name10", false, 1));
-        System.out.println(studentService.students);
+
         studentService.readTable();
 
         studentService.delete(3);
         studentService.delete(7);
         cityService.delete(1);
-        System.out.println(studentService.students);
+
         studentService.readTable();
         cityService.readTable();
 

@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentService implements TableService<Student> {
-    List<Student> students = new ArrayList<>();
+
 
     @Override
     public void create() {
@@ -21,7 +21,6 @@ public class StudentService implements TableService<Student> {
     public void insert(Student student) {
         try (Connection connection = DSUtils.getConnection()) {
             connection.setAutoCommit(false);
-            students.add(student);
             String insert = "insert into student(id, name,  is_man, city_id) values (?, ?, ?, ?) on conflict (id) do nothing";
             //String action = "update  set name = ?, city_id = ?  where id =" + student.getCity_id();
             PreparedStatement preparedStatement = connection.prepareStatement(insert);
@@ -40,7 +39,6 @@ public class StudentService implements TableService<Student> {
     public void update(Student student) {
         try (Connection connection = DSUtils.getConnection()) {
             connection.setAutoCommit(false);
-            students.set(student.getId() - 1, student);
             String update = "update student set name = ?, city_id = ? where id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(update);
             preparedStatement.setString(1, student.getName());
@@ -57,7 +55,6 @@ public class StudentService implements TableService<Student> {
     public void delete(int id) {
         try (Connection connection = DSUtils.getConnection()) {
             connection.setAutoCommit(false);
-            students.remove(id - 1);
             String delete = "delete from student where  id = ?;";
             PreparedStatement preparedStatement = connection.prepareStatement(delete);
             preparedStatement.setInt(1, id);
