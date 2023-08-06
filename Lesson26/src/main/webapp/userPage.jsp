@@ -4,6 +4,6 @@
     <title>Title</title>
 </head>
 <body>
-<h2><%=request.getParameter("firstName")%>, Ваша заявка успешно сохранена</h2>
+<h2>Заявка успешно сохранена</h2>
 </body>
 </html>
