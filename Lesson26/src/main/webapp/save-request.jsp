@@ -6,26 +6,26 @@
 </head>
 <body class="bg-secondary-subtle">
 <div class="container">
-<form class="row g-3" method="post" action="/">
+<form method="post" action="/">
     <div class="col-md-4">
         <label class="form-label">Имя</label>
-        <input type="text" class="form-control" name="firstName" value="${param.firstName}">
+        <input type="text" class="form-control" name="firstName" value="${firstName}">
     </div>
     <div class="col-md-4">
         <label class="form-label">Фамилия</label>
-        <input type="text" class="form-control" name="secondName" value="${param.secondName}">
+        <input type="text" class="form-control" name="secondName" value="${secondName}">
     </div>
     <div class="col-md-4">
         <label class="form-label">Город</label>
-        <input type="text" class="form-control" name="city" value="${param.city}">
+        <input type="text" class="form-control" name="city" value="${city}">
     </div>
 
     <div class="col-md-4">
         <label  class="form-label">Товар</label>
-        <input type="text" class="form-control"  name="product" value="${param.product}">
+        <input type="text" class="form-control"  name="product" value="${product}">
     </div>
-    <div class="col-12">
-        <button class="btn btn-secondary" type="submit">Отправить заявку</button>
+    <div>
+       <br> <button class="btn btn-secondary" type="submit">Отправить заявку</button>
     </div>
 </form>
 </div>
