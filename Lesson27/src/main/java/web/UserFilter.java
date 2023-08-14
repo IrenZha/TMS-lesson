@@ -22,8 +22,10 @@ public class UserFilter implements Filter {
         }
         if (UserData.userMap.containsKey(login)) {
             request.setAttribute("massage", "Login already exists");
-        } else request.setAttribute("login", login);
-        request.getRequestDispatcher("registration.jsp").forward(request, response);
+        } else {
+            request.setAttribute("login", login);
+            request.getRequestDispatcher("registration.jsp").forward(request, response);
+        }
     }
 
     @Override

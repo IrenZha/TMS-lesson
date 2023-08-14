@@ -2,16 +2,17 @@ package domain;
 
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 public class Todo {
+    private UUID id;
     private String task;
-    private String status = "Created";
+    Status status;
 
     public Todo(String task) {
+        this.id = UUID.randomUUID();
         this.task = task;
-    }
-
-    public String getStatus() {
-        return status;
+        this.status = Status.CREATED;
     }
 }

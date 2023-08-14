@@ -30,8 +30,7 @@
                         <th scope="row">${сounter.count}</th>
                         <td class="col-5"><c:out value="${list.task}"/></td>
                         <td>
-                            <input type="hidden" name="text" value="${list.task}"/>
-                            <input type="hidden" name="status" value="${list.status}"/>
+                            <input type="hidden" name="text" value="${list.id}"/>
                             <input class="btn btn-outline-secondary" type="submit" value="Change status"/>
                         </td>
                         <td><c:out value="${list.status}"/></td>
