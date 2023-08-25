@@ -20,9 +20,9 @@ public class Animal {
     @Temporal(TemporalType.DATE)
     private Date date = new Date();
     @Enumerated(EnumType.STRING)
-    HotelService hotelService;
-   @Embedded
-   Person person;
+    private HotelService hotelService;
+    @Embedded
+    Person person;
 
     public Animal(String name, Integer age, boolean isHealthy, HotelService hotelService, Person person) {
         this.moniker = name;
