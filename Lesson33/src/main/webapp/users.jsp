@@ -29,6 +29,12 @@
                 </li>
                 <li>
                     <form method="get" action="/users">
+                        <button class="nav-link active" type="submit" name="usersCredit" aria-current="page">Users with credit
+                        </button>
+                    </form>
+                </li>
+                <li>
+                    <form method="get" action="/users">
                         <button class="nav-link active" type="submit" name="tasks" aria-current="page">All Tasks
                         </button>
                     </form>
@@ -123,6 +129,42 @@
         </tbody>
     </table>
 </c:if>
+    <c:if test="${usersUnfinishedTasks != null}">
+        <table class="table table-hover table-secondary shadow mb-5">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Birthday</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tbody>
+            <c:forEach var="user" items="${usersUnfinishedTasks}" varStatus="сounter">
+            <tr class="table-secondary">
+                <th scope="row">${сounter.count}</th>
+                <td><c:out value="${user.userName}"/></td>
+                <td><c:out value="${user.type}"/></td>
+                <td><c:out value="${user.birthday}"/></td>
+                <td>
+                    <div class="col-md gap-2 d-md-flex justify-content-md-end">
+                        <c:if test="${typeUser == 'SUPPORT'}">
+                            <form method="post" action="/users">
+                                <input type="hidden" name="userIdForDelete" value="${user.id}"/>
+                                <input class="btn btn-outline-secondary" type="submit" value="Delete"/>
+                            </form>
+                        </c:if>
+                        <c:if test="${typeUser == 'ADMIN'}">
+                            <input class="btn btn-secondary disabled" type="submit" aria-disabled="true" value="Delete"/>
+                        </c:if>
+                    </div>
+                </td>
+                </c:forEach>
+            </tbody>
+        </table>
+    </c:if>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"

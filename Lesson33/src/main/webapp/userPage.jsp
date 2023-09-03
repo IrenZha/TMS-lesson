@@ -24,6 +24,12 @@
                             </button>
                         </li>
                         <li>
+                            <form method="get" action="/users">
+                                <button class="nav-link active" type="submit" name="usersCredit" aria-current="page">Users with credit
+                                </button>
+                            </form>
+                        </li>
+                        <li>
                             <button class="nav-link active" type="submit" name="tasks" aria-current="page">All Tasks
                             </button>
                         </li>

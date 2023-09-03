@@ -3,6 +3,7 @@ package service;
 import config.AppSessionFactory;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -76,8 +77,9 @@ public class DBService<T> {
         Session session = AppSessionFactory.getSession();
         Transaction transaction = session.beginTransaction();
 
-        List<T> list =(List<T>) session.createQuery(searchQuery)
-        .setParameter("search", "%"+text+"%");
+        Query query = session.createQuery(searchQuery);
+        query.setParameter("search", "%"+text+"%");
+        List<T> list = query.list();
 
 
         transaction.commit();

@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @WebServlet("/users")
 public class AllUsersServlet extends HttpServlet {
@@ -46,11 +48,17 @@ public class AllUsersServlet extends HttpServlet {
             req.setAttribute("usersList", allUsersList);
             req.getRequestDispatcher("users.jsp").forward(req, resp);
         }
+        if (req.getParameter("usersCredit") != null) {
+            List<UserData> list = userService.findList(userService.userUnfinishedTasks);
+            req.setAttribute("usersUnfinishedTasks", list);
+            req.getRequestDispatcher("users.jsp").forward(req, resp);
+        }
         if (req.getParameter("tasks") != null) {
             List<Task> allTasksList = taskService.findList(taskService.queryListTasks);
             req.setAttribute("tasksList", allTasksList);
             req.getRequestDispatcher("users.jsp").forward(req, resp);
         }
+
     }
 
     @Override

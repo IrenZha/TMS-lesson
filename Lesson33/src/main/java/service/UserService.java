@@ -12,6 +12,7 @@ public class UserService extends DBService<UserData> {
     public String queryIsExistsUser = "select user.userName from UserData as user";
     public String queryListUsers = "from UserData";
     public String searchQuery = "from UserData  where userName like :search";
+    public String userUnfinishedTasks = "select distinct u from Task t join UserData u on t.userData.id = u.id where t.status != 'DONE'";
     private UserService() {
     }
 
