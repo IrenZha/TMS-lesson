@@ -2,10 +2,12 @@ package service;
 
 import domain.Client;
 import lombok.Data;
+import org.springframework.stereotype.Service;
 
 import java.util.Scanner;
 
 @Data
+@Service
 public class ClientService {
     Scanner scanner = new Scanner(System.in);
     Client client;

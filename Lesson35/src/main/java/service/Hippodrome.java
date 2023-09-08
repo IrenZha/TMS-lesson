@@ -2,10 +2,12 @@ package service;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.stereotype.Service;
 
 
 @Data
 @AllArgsConstructor
+@Service
 public class Hippodrome {
    private final RunService runService;
     private final ClientService clientService;
