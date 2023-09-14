@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="horse1" class="domain.Horse">
+        <constructor-arg value="Horse1"/>
+    </bean>
+    <bean name="horse2" class="domain.Horse">
+        <constructor-arg value="Horse2"/>
+    </bean>
+    <bean name="horse3" class="domain.Horse">
+        <constructor-arg value="Horse3"/>
+    </bean>
+
+
+    <bean name="jockey1" class="domain.Jockey">
+        <constructor-arg value="Jockey1"/>
+    </bean>
+
+    <bean name="jockey2" class="domain.Jockey">
+        <constructor-arg value="Jockey2"/>
+    </bean>
+
+    <bean name="jockey3" class="domain.Jockey">
+        <constructor-arg value="Jockey3"/>
+    </bean>
+
+
+    <bean name="pair1" class="domain.Pair" >
+        <constructor-arg index="0" value="horse1"/>
+        <constructor-arg index="1" value="jockey1"/>
+    </bean>
+
+    <bean name="pair2" class="domain.Pair">
+        <constructor-arg index="0" value="horse2"/>
+        <constructor-arg index="1" value="jockey2"/>
+    </bean>
+
+    <bean name="pair3" class="domain.Pair">
+        <constructor-arg index="0" value="horse3"/>
+        <constructor-arg index="1" value="jockey3"/>
+    </bean>
+
+
+    <bean name="run" class="service.RunService" autowire="constructor"/>
+
+    <bean name="client" class="domain.Client">
+        <constructor-arg value="1000"/>
+    </bean>
+
+    <bean name="clientService" class="service.ClientService" autowire="constructor"/>
+
+     <bean name="game" class="service.Hippodrome" autowire="constructor"/>
+</beans>
