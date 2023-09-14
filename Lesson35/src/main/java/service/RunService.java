@@ -3,7 +3,6 @@ package service;
 import domain.Pair;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 
@@ -23,17 +22,7 @@ public class RunService {
         }
         System.out.println("-----------------------------------------------");
     }
-    @SneakyThrows
-    public void printMassageStart() {
-        System.out.println("-----------------------------------------------");
-        System.out.println("                      3");
-        Thread.sleep(1000);
-        System.out.println("                      2");
-        Thread.sleep(1000);
-        System.out.println("                      1");
-        Thread.sleep(1000);
-        System.out.println("--------------------START---------------------");
-    }
+
     public void printMassageFinish() {
         System.out.println("--------------------FINISH---------------------");
         System.out.println();
