@@ -12,9 +12,9 @@
         <div class="col-md-6 p-3 px-5">
             <form class="row" action="/book" method="post">
                 <div class="col">
-                    <input class="form-control" type="text" name="title" placeholder="Title" required><br>
-                    <input class="form-control" type="number" name="page" placeholder="Page"><br>
-                    <input class="form-control" name="author" placeholder="Author" required><br>
+                    <input class="form-control" type="text" name="title" placeholder="Title">${title_error} <br>
+                    <input class="form-control" type="number" name="pages" placeholder="Pages">${pages_error} <br>
+                    <input class="form-control" name="author" placeholder="Author">${author_error} <br>
                 </div>
                 <div class="col">
                     <button class="btn btn-outline-secondary" type="submit">Add</button>
@@ -36,7 +36,7 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Title</th>
-            <th scope="col">Page</th>
+            <th scope="col">Pages</th>
             <th scope="col">Author</th>
         </tr>
         </thead>
@@ -45,7 +45,7 @@
         <tr>
             <th scope="row">${сounter.count}</th>
             <td><c:out value="${list.title}"/></td>
-            <td><c:out value="${list.page}"/></td>
+            <td><c:out value="${list.pages}"/></td>
             <td><c:out value="${list.author}"/></td>
             </c:forEach>
         </tbody>

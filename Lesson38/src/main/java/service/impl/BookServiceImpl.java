@@ -2,6 +2,7 @@ package service.impl;
 
 import config.AppSessionFactory;
 import domain.Book;
+import exception.BookExistsException;
 import lombok.Data;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -45,6 +46,8 @@ public class BookServiceImpl implements BookService {
 
             transaction.commit();
             session.close();
+        } else {
+            throw new BookExistsException();
         }
     }
 

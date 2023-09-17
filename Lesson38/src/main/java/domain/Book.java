@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Data
@@ -16,13 +20,22 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotNull
+    @NotBlank
     private String title;
-    private Integer page;
+
+    @Min(value = 50)
+    @Max(value = 1000)
+    private Integer pages;
+
+    @NotNull
+    @NotBlank
     private  String author;
 
-    public Book(String title, Integer page, String author) {
+    public Book(String title, Integer pages, String author) {
         this.title = title;
-        this.page = page;
+        this.pages = pages;
         this.author = author;
     }
 
