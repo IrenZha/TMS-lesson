@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import service.BookService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Data
@@ -38,10 +37,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void saveBook(Book book) {
-        Optional<Book> first = getBooks().stream()
-                .filter(book1 -> book1.equals(book))
-                .findFirst();
-        if (first.isEmpty()) {
+        if (!isExistsBook(book)) {
             Session session = AppSessionFactory.getSession();
             Transaction transaction = session.beginTransaction();
 
@@ -50,6 +46,18 @@ public class BookServiceImpl implements BookService {
             transaction.commit();
             session.close();
         }
+    }
+
+    public boolean isExistsBook(Book book) {
+        Session session = AppSessionFactory.getSession();
+        Transaction transaction = session.beginTransaction();
+
+        boolean anyMatch = getBooks().stream()
+                .anyMatch(book1 -> book1.equals(book));
+
+        transaction.commit();
+        session.close();
+        return anyMatch;
     }
 
     @Override
