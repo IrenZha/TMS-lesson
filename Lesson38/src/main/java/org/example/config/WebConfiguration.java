@@ -1,4 +1,4 @@
-package config;
+package org.example.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +12,7 @@ public class WebConfiguration {
     @Bean
     public ViewResolver viewResolver(){
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-      //  viewResolver.setPrefix("/");
+       viewResolver.setPrefix("jsp/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
     }

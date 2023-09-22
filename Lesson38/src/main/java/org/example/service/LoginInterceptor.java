@@ -1,4 +1,4 @@
-package service;
+package org.example.service;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
