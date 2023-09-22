@@ -1,6 +1,6 @@
-package service;
+package org.example.service;
 
-import domain.Book;
+import org.example.domain.Book;
 
 import java.util.List;
 

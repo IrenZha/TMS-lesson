@@ -1,13 +1,13 @@
-package service.impl;
+package org.example.service.impl;
 
-import config.AppSessionFactory;
-import domain.Book;
-import exception.BookExistsException;
+import org.example.config.AppSessionFactory;
+import org.example.domain.Book;
+import org.example.exception.BookExistsException;
 import lombok.Data;
+import org.example.service.BookService;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Service;
-import service.BookService;
 
 import java.util.List;
 

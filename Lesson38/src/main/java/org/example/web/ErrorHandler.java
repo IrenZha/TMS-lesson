@@ -1,6 +1,6 @@
-package web;
+package org.example.web;
 
-import exception.BookExistsException;
+import org.example.exception.BookExistsException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 

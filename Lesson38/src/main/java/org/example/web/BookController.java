@@ -1,13 +1,13 @@
-package web;
+package org.example.web;
 
-import domain.Book;
+import org.example.domain.Book;
 import lombok.RequiredArgsConstructor;
+import org.example.service.BookService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import service.BookService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -17,10 +17,10 @@ import java.util.List;
 @RequestMapping(value = "/book")
 public class BookController {
     private final BookService bookService;
-    private final ModelAndView modelAndView = new ModelAndView("book");
 
     @GetMapping
     public ModelAndView getBook(@RequestParam(name = "search", required = false) String search) {
+        ModelAndView modelAndView = new ModelAndView("book");
         if (search != null) {
             modelAndView.addObject("books", bookService.search(search));
         } else {
@@ -31,6 +31,7 @@ public class BookController {
 
     @PostMapping
     public ModelAndView addBook(@Valid Book book, BindingResult bindingResult) {
+        ModelAndView modelAndView = new ModelAndView("book");
         if (bindingResult.hasErrors()) {
             List<FieldError> errors = bindingResult.getFieldErrors();
             for (var error : errors) {

@@ -1,6 +1,6 @@
-package config;
+package org.example.config;
 
-import domain.Book;
+import org.example.domain.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AvailableSettings;
