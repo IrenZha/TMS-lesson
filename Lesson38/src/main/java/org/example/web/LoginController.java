@@ -3,6 +3,7 @@ package org.example.web;
 import lombok.RequiredArgsConstructor;
 import org.example.service.BookService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,6 +13,11 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/login")
 public class LoginController {
     private final BookService bookService;
+
+    @GetMapping
+    public String getLogin() {
+        return "login";
+    }
 
     @PostMapping
     public ModelAndView login() {
