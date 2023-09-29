@@ -14,7 +14,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         String password = request.getParameter("password");
         if (login == null || login.isBlank()
                 || password == null || password.isBlank()) {
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
             return false;
         }
         return true;
