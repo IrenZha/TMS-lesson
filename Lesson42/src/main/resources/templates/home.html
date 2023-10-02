@@ -30,16 +30,24 @@
         <table class="table table-hover">
             <thead>
             <tr>
+                <th scope="col">Number</th>
                 <th scope="col">Name</th>
                 <th scope="col">Age</th>
                 <th scope="col">Gender</th>
+                <th scope="col">Up</th>
+                <th scope="col">Down</th>
             </tr>
             </thead>
             <tbody>
             <tr class="table-secondary" th:each="item: ${students}">
+                <form th:action="@{/order(id=${item.id})}" method="post">
+                <td th:text="${item.number}"></td>
                 <td th:text="${item.name}"></td>
                 <td th:text="${item.age}"></td>
                 <td th:text="${item.gender}"></td>
+                <td><button class="btn btn-outline-secondary shadow mb-5" type="submit" name="update" value="up">/\</button></td>
+                <td><button class="btn btn-outline-secondary shadow mb-5" type="submit" name="update" value="down">\/</button></td>
+                </form>
             </tbody>
         </table>
     </div>
