@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body class="bg-secondary-subtle">
+<div class="container">
+    <div class="row py-5">
+    <div class="col-md-4 p-3 px-5 shadow rounded">
+        <form action="/" method="post" th:object="${student}">
+            <input th:field="*{name}" class="form-control" placeholder="Name">
+            <p th:text="${name_error}"/>
+            <input th:field="*{age}" type="number" class="form-control" placeholder="Age">
+            <p th:text="${age_error}"/>
+            <div>
+                <select class="form-select" th:field="*{gender}">
+                    <option selected value="MALE">MALE</option>
+                    <option value="FEMALE">FEMALE</option>
+                </select>
+            </div>
+            <br>
+            <button class="btn btn-outline-secondary shadow mb-5">Save</button>
+
+        </form>
+    </div>
+    <div class="col-md-8 p-3 px-5 shadow rounded">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Gender</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="table-secondary" th:each="item: ${students}">
+                <td th:text="${item.name}"></td>
+                <td th:text="${item.age}"></td>
+                <td th:text="${item.gender}"></td>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</body>
+</html>
