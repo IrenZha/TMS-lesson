@@ -71,8 +71,8 @@
                         <td th:text="${item.lastName}"></td>
                         <td th:text="${item.age}"></td>
                         <td th:text="${item.gender}"></td>
-                        <td><button class="btn btn-outline-secondary" type="submit" name="update" value="up">/\</button></td>
-                        <td><button class="btn btn-outline-secondary" type="submit" name="update" value="down">\/</button></td>
+                        <td><button th:if="${item.number > 1}" class="btn btn-outline-secondary" type="submit" name="update" value="up">/\</button></td>
+                        <td><button th:if="${item.number < students.size()}" class="btn btn-outline-secondary" type="submit" name="update" value="down">\/</button></td>
                     </form>
                 </tbody>
             </table>
