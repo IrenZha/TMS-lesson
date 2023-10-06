@@ -1,15 +1,21 @@
 package com.example.lesson42.service.impl;
 
 import com.example.lesson42.domain.StudentDto;
+import com.example.lesson42.domain.StudentSearchDto;
 import com.example.lesson42.mapper.StudentMapper;
+import com.example.lesson42.model.Gender;
 import com.example.lesson42.model.StudentEntity;
 import com.example.lesson42.repository.StudentRepository;
 import com.example.lesson42.service.StudentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.criteria.Predicate;
 import java.util.*;
+
+import static org.apache.commons.lang3.StringUtils.isNoneBlank;
 
 @RequiredArgsConstructor
 @Service
@@ -67,5 +73,38 @@ public class StudentServiceImpl implements StudentService {
     public List<StudentDto> order() {
         List<StudentEntity> byNumber = repository.findAllByOrderByNumber();
         return mapper.entityToStudentDto(byNumber);
+    }
+
+    @Override
+    public List<StudentDto> search(StudentSearchDto searchDto) {
+        List<StudentEntity> studentEntities;
+        String text = searchDto.getText();
+        if (isNoneBlank(text)) {
+            studentEntities = repository.searchBy(text);
+        } else {
+            studentEntities = repository.findAll(createSearch(searchDto));
+        }
+        return mapper.entityToStudentDto(studentEntities);
+    }
+
+    private Specification<StudentEntity> createSearch(StudentSearchDto searchDto) {
+        return (root, query, criteriaBuilder) -> {
+            List<Predicate> predicates = new ArrayList<>();
+            String firstName = searchDto.getFirstName();
+            if (isNoneBlank(firstName)) {
+                predicates.add(criteriaBuilder.like(root.get("firstName"), "%" + firstName + "%"));
+            }
+            String lastName = searchDto.getLastName();
+            if (isNoneBlank(lastName)) {
+                predicates.add(criteriaBuilder.like(root.get("lastName"), "%" + lastName + "%"));
+            }
+            if (searchDto.getAge() != null) {
+                predicates.add(criteriaBuilder.equal(root.get("age"), searchDto.getAge()));
+            }
+            if (searchDto.getGender() != null) {
+                predicates.add(criteriaBuilder.equal(root.get("gender"), searchDto.getGender()));
+            }
+            return criteriaBuilder.and(predicates.toArray(Predicate[]::new));
+        };
     }
 }

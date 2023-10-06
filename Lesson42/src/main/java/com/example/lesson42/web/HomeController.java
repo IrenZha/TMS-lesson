@@ -1,6 +1,7 @@
 package com.example.lesson42.web;
 
 import com.example.lesson42.domain.StudentDto;
+import com.example.lesson42.domain.StudentSearchDto;
 import com.example.lesson42.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -29,7 +30,8 @@ public class HomeController {
     }
 
     @PostMapping
-    public ModelAndView save(@ModelAttribute(name = "student") @Valid StudentDto student, BindingResult bindingResult) {
+    public ModelAndView save(@ModelAttribute(name = "student") @Valid StudentDto student,
+                             BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView("home");
         if (bindingResult.hasErrors()) {
             List<FieldError> errors = bindingResult.getFieldErrors();
@@ -44,6 +46,15 @@ public class HomeController {
         }
         var students = service.order();
         modelAndView.addObject("students", students);
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/search")
+    public ModelAndView search(@ModelAttribute(name = "student") StudentDto student,
+                               StudentSearchDto searchDto) {
+        List<StudentDto> search = service.search(searchDto);
+        ModelAndView modelAndView = new ModelAndView("home");
+        modelAndView.addObject("students", search);
         return modelAndView;
     }
 

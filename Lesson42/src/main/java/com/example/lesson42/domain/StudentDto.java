@@ -13,7 +13,10 @@ public class StudentDto {
     private UUID id;
     @NotBlank
     @NotNull
-    private String name;
+    private String firstName;
+    @NotBlank
+    @NotNull
+    private String lastName;
     @Max(100)
     @Min(5)
     private Integer age;
