@@ -3,7 +3,6 @@ package com.example.lesson42.service.impl;
 import com.example.lesson42.domain.StudentDto;
 import com.example.lesson42.domain.StudentSearchDto;
 import com.example.lesson42.mapper.StudentMapper;
-import com.example.lesson42.model.Gender;
 import com.example.lesson42.model.StudentEntity;
 import com.example.lesson42.repository.StudentRepository;
 import com.example.lesson42.service.StudentService;
