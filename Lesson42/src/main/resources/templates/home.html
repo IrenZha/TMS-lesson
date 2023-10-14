@@ -9,41 +9,75 @@
 <body class="bg-secondary-subtle">
 <div class="container">
     <div class="row py-5">
-    <div class="col-md-4 p-3 px-5 shadow rounded">
-        <form action="/" method="post" th:object="${student}">
-            <input th:field="*{name}" class="form-control" placeholder="Name">
-            <p th:text="${name_error}"/>
-            <input th:field="*{age}" type="number" class="form-control" placeholder="Age">
-            <p th:text="${age_error}"/>
-            <div>
-                <select class="form-select" th:field="*{gender}">
-                    <option selected value="MALE">MALE</option>
-                    <option value="FEMALE">FEMALE</option>
-                </select>
-            </div>
-            <br>
-            <button class="btn btn-outline-secondary shadow mb-5">Save</button>
+        <div class="col-md-3 p-3 px-5 shadow rounded">
+            <form action="/" method="post" th:object="${student}">
+                <input th:field="*{firstName}" class="form-control" placeholder="First Name">
+                <p th:text="${firstName_error}"/>
+                <input th:field="*{lastName}" class="form-control" placeholder="Last Name">
+                <p th:text="${lastName_error}"/>
+                <input th:field="*{age}" type="number" class="form-control" placeholder="Age">
+                <p th:text="${age_error}"/>
+                <div>
+                    <select class="form-select" th:field="*{gender}">
+                        <option selected value="MALE">MALE</option>
+                        <option value="FEMALE">FEMALE</option>
+                    </select>
+                </div>
+                <br>
+                <button class="btn btn-outline-secondary shadow mb-5">Save</button>
 
-        </form>
+            </form>
+        </div>
+        <div class="col-md-9 p-3 px-5 shadow rounded">
+            <form action="/search" method="get">
+                <div class="row content-end">
+               <div class="col-3"><input type="text" name="text" class="form-control"/></div>
+                    <div class="col-1"><input type="submit" class="btn btn-outline-secondary" value="Search"/></div>
+                </div>
+            </form><hr>
+            <table class="table table-secondary">
+                <thead>
+                <tr>
+                    <th class="col-1">#</th>
+                    <th class="col-3">First Name</th>
+                    <th class="col-4">Last Name</th>
+                    <th class="col-1">Age</th>
+                    <th class="col-1">Gender</th>
+                    <th class="col-1"></th>
+                    <th class="col-1"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <form action="/search" method="get">
+                        <td></td>
+                        <td><input type="text" name="firstName" class="form-control"/></td>
+                        <td><input type="text" name="lastName" class="form-control"/></td>
+                        <td><input type="number" name="age" class="form-control"/></td>
+                        <td class="col-2">
+                            <select class="form-select" name="gender">
+                            <option></option>
+                            <option value="MALE">MALE</option>
+                            <option value="FEMALE">FEMALE</option>
+                        </select>
+                        </td>
+                        <td><input type="submit" class="btn btn-outline-secondary" value="Filter"/></td>
+                    </form>
+                </tr>
+                <tr class="table-secondary" th:each="item: ${students}">
+                    <form th:action="@{/order(id=${item.id})}" method="post">
+                        <td th:text="${item.number}"></td>
+                        <td th:text="${item.firstName}"></td>
+                        <td th:text="${item.lastName}"></td>
+                        <td th:text="${item.age}"></td>
+                        <td th:text="${item.gender}"></td>
+                        <td><button th:if="${item.number > 1}" class="btn btn-outline-secondary" type="submit" name="update" value="up">/\</button></td>
+                        <td><button th:if="${item.number < students.size()}" class="btn btn-outline-secondary" type="submit" name="update" value="down">\/</button></td>
+                    </form>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <div class="col-md-8 p-3 px-5 shadow rounded">
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Age</th>
-                <th scope="col">Gender</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="table-secondary" th:each="item: ${students}">
-                <td th:text="${item.name}"></td>
-                <td th:text="${item.age}"></td>
-                <td th:text="${item.gender}"></td>
-            </tbody>
-        </table>
-    </div>
-</div>
 </div>
 </body>
 </html>

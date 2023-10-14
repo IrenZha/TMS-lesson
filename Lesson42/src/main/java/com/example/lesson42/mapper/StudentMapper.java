@@ -11,15 +11,19 @@ import java.util.List;
 public interface StudentMapper {
 
     @Mapping(target = "id", source = "id")
-    @Mapping(target = "name", source = "name")
+    @Mapping(target = "firstName", source = "firstName")
+    @Mapping(target = "lastName", source = "lastName")
     @Mapping(target = "age", source = "age")
     @Mapping(target = "gender", source = "gender")
+    @Mapping(target = "number", source = "number")
 StudentEntity dtoToStudentEntity(StudentDto dto);
 
     @Mapping(target = "id", source = "id")
-    @Mapping(target = "name", source = "name")
+    @Mapping(target = "firstName", source = "firstName")
+    @Mapping(target = "lastName", source = "lastName")
     @Mapping(target = "age", source = "age")
     @Mapping(target = "gender", source = "gender")
+    @Mapping(target = "number", source = "number")
     StudentDto entityToStudentDto(StudentEntity entity);
 
     List<StudentDto> entityToStudentDto(List<StudentEntity> entity);
