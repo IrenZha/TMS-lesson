@@ -14,12 +14,17 @@ import java.util.UUID;
 public class MainController {
     private final UserService service;
 
-    @GetMapping("/users")
-    public UserDto getById(@RequestParam(name = "id") UUID id) {
+    @GetMapping("/{id}")
+    public UserDto getById(@PathVariable(name = "id") UUID id)  {
         return service.getById(id);
     }
     @GetMapping
     public List<UserDto> getAll(){
       return service.getAll();
+    }
+
+    @PostMapping("/users")
+    public UserDto save(@RequestBody UserDto user){
+        return service.save(user);
     }
 }

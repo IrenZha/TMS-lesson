@@ -20,7 +20,7 @@ public class UserController {
     }
 
     @PostMapping
-    public UserDto create(@RequestBody UserDto user) {
+    public UserDto save(@RequestBody UserDto user) {
         return service.save(user);
     }
 

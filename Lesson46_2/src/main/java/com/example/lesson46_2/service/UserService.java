@@ -9,4 +9,6 @@ public interface UserService {
     UserDto getById(UUID id);
 
     List<UserDto> getAll();
+
+    UserDto save(UserDto user);
 }
