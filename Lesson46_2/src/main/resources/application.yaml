@@ -1,2 +1,4 @@
 server:
   port: 8080
+client:
+  users: http://127.0.0.1:8081/users/

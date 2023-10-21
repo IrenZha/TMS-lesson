@@ -12,6 +12,7 @@ import static org.mapstruct.MappingConstants.ComponentModel.SPRING;
 
 @Mapper(componentModel = SPRING)
 public interface UserMapper {
+    @Mapping(target = "password", ignore = true)
     UserDto toDto(UserEntity userEntity);
 
     List<UserDto> toDtos(List<UserEntity> userEntity);
