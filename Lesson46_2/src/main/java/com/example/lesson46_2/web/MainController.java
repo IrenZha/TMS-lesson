@@ -11,8 +11,10 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
@@ -47,7 +49,7 @@ public class MainController {
             responses = {
                     @ApiResponse(description = "successful operation",
                             responseCode = "200", content = @Content(
-                                    array = @ArraySchema(schema = @Schema(implementation = UserDto.class))
+                            array = @ArraySchema(schema = @Schema(implementation = UserDto.class))
                     ))
             })
     @GetMapping
@@ -56,7 +58,7 @@ public class MainController {
     }
 
     @PostMapping("/users")
-    public UserDto save(@RequestBody UserDto user) {
+    public UserDto save(@Valid @RequestBody UserDto user) {
         return service.save(user);
     }
 }

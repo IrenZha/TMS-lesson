@@ -1,5 +1,6 @@
 package com.example.lesson46_2.dto;
 
+import com.example.lesson46_2.valid.UserConstraint;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -9,6 +10,7 @@ import java.util.UUID;
 
 @Data
 @Schema(title = "UserDto request")
+@UserConstraint
 public class UserDto {
     private UUID id;
     @Schema(title = "set uniq login")
