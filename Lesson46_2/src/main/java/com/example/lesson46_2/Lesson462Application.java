@@ -13,5 +13,4 @@ public class Lesson462Application {
     public static void main(String[] args) {
         SpringApplication.run(Lesson462Application.class, args);
     }
-
 }
