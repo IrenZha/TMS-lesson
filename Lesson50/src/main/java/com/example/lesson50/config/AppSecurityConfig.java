@@ -39,7 +39,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                     request.getSession().invalidate();
                     response.sendRedirect("public");
                 }))
-                .and();
+                .and()
+                .cors().disable()
+                .csrf().disable();
     }
 
     @Override
